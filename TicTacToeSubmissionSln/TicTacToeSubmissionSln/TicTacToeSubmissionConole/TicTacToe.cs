@@ -22,7 +22,7 @@ namespace TicTacToeSubmissionConole
         {
             Console.SetCursorPosition(2, 19);
 
-            // change to enum
+           
             if (player == 1)
                 Console.Write("Player X");
             else
@@ -39,7 +39,6 @@ namespace TicTacToeSubmissionConole
             Console.Write("Please Enter Column: ");
             var column = Console.ReadLine();
 
-            // store move in array
             int rowNumber = int.Parse(row);
             int columnNumber = int.Parse(column);
             int arrayPos = (rowNumber * 3) + columnNumber;
@@ -87,10 +86,10 @@ namespace TicTacToeSubmissionConole
             while (_rounds < 4)
             {
 
-                //Change to Enum
+              
                 PlayMove(1);
 
-                //Change to Enum
+               
                 playerXWins = CheckIfPlayerWins(1);
 
                 if (playerXWins)
@@ -103,9 +102,9 @@ namespace TicTacToeSubmissionConole
 
 
                 
-                //Change to Enum
+               
                 PlayMove(2);
-                //Change to Enum
+               
                 playerOWins = CheckIfPlayerWins(2);
 
                 if (playerOWins)
@@ -114,20 +113,14 @@ namespace TicTacToeSubmissionConole
 
                     break;
                 }
-                // checkif x won
-
-                // if x won, exit
-
-                // check if o won 
-
-                // if o won exit
+             
 
                 _rounds++;
             }
 
             if (!playerXWins && !playerOWins)
                 Console.WriteLine("The game is draw!");
-            // FOR ILLUSTRATION CHANGE TO YOUR OWN LOGIC TO DO TIC TAC TOE
+            
 
             Console.SetCursorPosition(2, 19);
 
@@ -144,8 +137,7 @@ namespace TicTacToeSubmissionConole
             Console.Write("Please Enter Column: ");
             var column = Console.ReadLine();
 
-
-            // THIS JUST DRAWS THE BOARD (NO TIC TAC TOE LOGIC)
+                        
             _boardRenderer.AddMove(int.Parse(row), int.Parse(column), PlayerEnum.X, true);            
 
         }
