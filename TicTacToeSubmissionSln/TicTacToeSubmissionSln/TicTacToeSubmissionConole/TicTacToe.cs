@@ -46,14 +46,14 @@ namespace TicTacToeSubmissionConole
 
             _boardPositions[arrayPos] = player;
 
-            //  add move to the board
+           
             if (player == 1)
                 _boardRenderer.AddMove(rowNumber, columnNumber, PlayerEnum.X, true);
             else
                 _boardRenderer.AddMove(rowNumber, columnNumber, PlayerEnum.O, true);
 
         }
-        // I really don't like this int design decision we made.  int doesn't look good.  Next class we can change to an enum
+        
         public bool CheckIfPlayerWins(int player)
         {
             if ((_boardPositions[0] == player) && (_boardPositions[1] == player) && (_boardPositions[2] == player))
@@ -73,10 +73,7 @@ namespace TicTacToeSubmissionConole
             if ((_boardPositions[2] == player) && (_boardPositions[4] == player) && (_boardPositions[6] == player))
                 return true;
 
-            // DO OTHER 7 Checks                
-
-
-            // Leave this here as it will be false if all states above are false
+                   
             return false;
         }
 
@@ -105,8 +102,7 @@ namespace TicTacToeSubmissionConole
                 }
 
 
-                // play o
-
+                
                 //Change to Enum
                 PlayMove(2);
                 //Change to Enum
