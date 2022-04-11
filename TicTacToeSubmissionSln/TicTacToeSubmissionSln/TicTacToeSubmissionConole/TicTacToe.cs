@@ -9,7 +9,7 @@ namespace TicTacToeSubmissionConole
     public class TicTacToe
     {
         private TicTacToeConsoleRenderer _boardRenderer;
-        private int[] _boardPositions = new int[9];
+        private int[] _boardPositions = new int[] {-1,-1,-1,-1,-1,-1,-1,-1,-1};
         private int _rounds;
 
         public TicTacToe()
@@ -18,12 +18,14 @@ namespace TicTacToeSubmissionConole
             _boardRenderer.Render();
         }
 
-        private void PlayMove (int player)
+        private void PlayMove (PlayerEnum player)
         {
+                       
+
             Console.SetCursorPosition(2, 19);
 
            
-            if (player == 1)
+            if (player == PlayerEnum.X)
                 Console.Write("Player X");
             else
                 Console.Write("Player O");
@@ -43,33 +45,33 @@ namespace TicTacToeSubmissionConole
             int columnNumber = int.Parse(column);
             int arrayPos = (rowNumber * 3) + columnNumber;
 
-            _boardPositions[arrayPos] = player;
+            _boardPositions[arrayPos] = (int) player;
 
-           
-            if (player == 1)
-                _boardRenderer.AddMove(rowNumber, columnNumber, PlayerEnum.X, true);
-            else
-                _boardRenderer.AddMove(rowNumber, columnNumber, PlayerEnum.O, true);
+            _boardRenderer.AddMove(rowNumber, columnNumber, player, true);
 
+         
         }
         
-        public bool CheckIfPlayerWins(int player)
+        public bool CheckIfPlayerWins(PlayerEnum player)
+
         {
-            if ((_boardPositions[0] == player) && (_boardPositions[1] == player) && (_boardPositions[2] == player))
+            int playerValue = (int) player;
+
+            if ((_boardPositions[0] == playerValue) && (_boardPositions[1] == playerValue) && (_boardPositions[2] == playerValue))
                 return true;
-            if ((_boardPositions[3] == player) && (_boardPositions[4] == player) && (_boardPositions[5] == player))
+            if ((_boardPositions[3] == playerValue) && (_boardPositions[4] == playerValue) && (_boardPositions[5] == playerValue))
                 return true;
-            if ((_boardPositions[6] == player) && (_boardPositions[7] == player) && (_boardPositions[8] == player))
+            if ((_boardPositions[6] == playerValue) && (_boardPositions[7] == playerValue) && (_boardPositions[8] == playerValue))
                 return true;
-            if ((_boardPositions[0] == player) && (_boardPositions[3] == player) && (_boardPositions[6] == player))
+            if ((_boardPositions[0] == playerValue) && (_boardPositions[3] == playerValue) && (_boardPositions[6] == playerValue))
                 return true;
-            if ((_boardPositions[1] == player) && (_boardPositions[4] == player) && (_boardPositions[7] == player))
+            if ((_boardPositions[1] == playerValue) && (_boardPositions[4] == playerValue) && (_boardPositions[7] == playerValue))
                 return true;
-            if ((_boardPositions[2] == player) && (_boardPositions[5] == player) && (_boardPositions[8] == player))
+            if ((_boardPositions[2] == playerValue) && (_boardPositions[5] == playerValue) && (_boardPositions[8] == playerValue))
                 return true;
-            if ((_boardPositions[0] == player) && (_boardPositions[4] == player) && (_boardPositions[8] == player))
+            if ((_boardPositions[0] == playerValue) && (_boardPositions[4] == playerValue) && (_boardPositions[8] == playerValue))
                 return true;
-            if ((_boardPositions[2] == player) && (_boardPositions[4] == player) && (_boardPositions[6] == player))
+            if ((_boardPositions[2] == playerValue) && (_boardPositions[4] == playerValue) && (_boardPositions[6] == playerValue))
                 return true;
 
                    
@@ -87,10 +89,10 @@ namespace TicTacToeSubmissionConole
             {
 
               
-                PlayMove(1);
+                PlayMove(PlayerEnum.X);
 
                
-                playerXWins = CheckIfPlayerWins(1);
+                playerXWins = CheckIfPlayerWins(PlayerEnum.X);
 
                 if (playerXWins)
                 {
@@ -99,13 +101,11 @@ namespace TicTacToeSubmissionConole
                     break;
 
                 }
-
-
-                
+                                               
                
-                PlayMove(2);
+                PlayMove(PlayerEnum.O);
                
-                playerOWins = CheckIfPlayerWins(2);
+                playerOWins = CheckIfPlayerWins(PlayerEnum.O);
 
                 if (playerOWins)
                 {
